@@ -8,7 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * DAO encargado de consultar las categorías del catálogo de servicios.
  * Se usa tanto para alimentar el combo del CRUD de administración como
@@ -18,7 +19,7 @@ import java.util.List;
  * @version 1.0
  */
 public class CategoriaDAO {
-
+    private static final Logger LOGGER = Logger.getLogger(CategoriaDAO.class.getName());
     /**
      * Obtiene todas las categorías ordenadas alfabéticamente por nombre.
      *
@@ -41,7 +42,7 @@ public class CategoriaDAO {
                 listado.add(categoria);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
         }
         return listado;
     }

@@ -1,7 +1,5 @@
 package com.rfmc.estetica.carolina.mora.web.dao;
 
-
-
 import com.rfmc.estetica.carolina.mora.web.modelo.Usuario;
 import com.rfmc.estetica.carolina.mora.web.util.Conexion;
 import com.rfmc.estetica.carolina.mora.web.util.PasswordUtil;
@@ -13,6 +11,8 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * DAO encargado de la gestión de usuarios: registro de clientes (RF-01),
@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 public class UsuarioDAO {
-
+    private static final Logger LOGGER = Logger.getLogger(UsuarioDAO.class.getName());
     /**
      * Registra un nuevo cliente en el sistema ejecutando 3 inserciones
      * encadenadas: user → client_profile → user_role (CLIENT).
@@ -76,7 +76,7 @@ public class UsuarioDAO {
             return true;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en UsuarioDAO", e);
             return false;
         }
     }
@@ -117,7 +117,7 @@ public class UsuarioDAO {
                 return usuario;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en UsuarioDAO", e);
         }
         return null;
     }
@@ -154,7 +154,7 @@ public class UsuarioDAO {
                 usuario.setRoleCode(rs.getString("role_code"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en UsuarioDAO", e);
         }
         return usuario;
     }
@@ -181,7 +181,7 @@ public class UsuarioDAO {
             System.out.println("Perfil actualizado con éxito.");
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en UsuarioDAO", e);
             return false;
         }
     }
@@ -205,7 +205,7 @@ public class UsuarioDAO {
                 return rs.getInt("total") > 0;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en UsuarioDAO", e);
         }
         return false;
     }

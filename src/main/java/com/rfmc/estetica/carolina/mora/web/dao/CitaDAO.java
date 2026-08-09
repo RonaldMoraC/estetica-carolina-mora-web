@@ -202,7 +202,7 @@ public class CitaDAO {
                 cita.setServiceName(rs.getString("service_name"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
         }
         return cita;
     }
@@ -233,7 +233,7 @@ public class CitaDAO {
             System.out.println("Cita reprogramada. Filas afectadas: " + filas);
             return filas > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
             return false;
         }
     }
@@ -260,7 +260,7 @@ public class CitaDAO {
             System.out.println("Cita cancelada. Filas afectadas: " + filas);
             return filas > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
             return false;
         }
     }

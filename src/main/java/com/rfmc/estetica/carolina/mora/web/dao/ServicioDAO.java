@@ -8,7 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * DAO encargado del CRUD completo del catálogo de servicios.
  * 
@@ -20,7 +21,7 @@ import java.util.List;
  * @version 1.0
  */
 public class ServicioDAO {
-
+    private static final Logger LOGGER = Logger.getLogger(ServicioDAO.class.getName());
     /**
      * Lista TODOS los servicios (activos e inactivos) con el nombre de su
      * categoría (JOIN), ordenados del más reciente al más antiguo.
@@ -56,7 +57,7 @@ public class ServicioDAO {
                 listado.add(servicio);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en ServicioDAO", e);
         }
         return listado;
     }
@@ -116,7 +117,7 @@ public class ServicioDAO {
                 listado.add(servicio);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en ServicioDAO", e);
         }
         return listado;
     }
@@ -155,7 +156,7 @@ public class ServicioDAO {
                 servicio.setActivo(rs.getBoolean("is_active"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en ServicioDAO", e);
         }
         return servicio;
     }
@@ -183,7 +184,7 @@ public class ServicioDAO {
             System.out.println("Servicio guardado con éxito.");
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en ServicioDAO", e);
             return false;
         }
     }
@@ -214,7 +215,7 @@ public class ServicioDAO {
             System.out.println("Servicio actualizado con éxito.");
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error JDBC en ServicioDAO", e);
             return false;
         }
     }
