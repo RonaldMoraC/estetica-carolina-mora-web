@@ -42,7 +42,7 @@ public class CategoriaDAO {
                 listado.add(categoria);
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CategoriaDAO", e);
         }
         return listado;
     }

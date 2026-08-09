@@ -74,7 +74,7 @@ public class CitaDAO {
             System.out.println("Cita agendada con éxito.");
             return true;
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CitaDAO", e);
             return false;
         }
     }
@@ -101,7 +101,7 @@ public class CitaDAO {
                 return rs.getLong("professional_profile_id");
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CitaDAO", e);
         }
         return 0;
     }
@@ -160,7 +160,7 @@ public class CitaDAO {
                 listado.add(cita);
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CitaDAO", e);
         }
         return listado;
     }
@@ -202,7 +202,7 @@ public class CitaDAO {
                 cita.setServiceName(rs.getString("service_name"));
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CitaDAO", e);
         }
         return cita;
     }
@@ -233,7 +233,7 @@ public class CitaDAO {
             System.out.println("Cita reprogramada. Filas afectadas: " + filas);
             return filas > 0;
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CitaDAO", e);
             return false;
         }
     }
@@ -260,7 +260,7 @@ public class CitaDAO {
             System.out.println("Cita cancelada. Filas afectadas: " + filas);
             return filas > 0;
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error JDBC en NombreDAO", e);
+            LOGGER.log(Level.SEVERE, "Error JDBC en CitaDAO", e);
             return false;
         }
     }
