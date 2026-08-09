@@ -36,10 +36,17 @@ public class Cita {
     public Cita() {
     }
 
-    /**
+        /**
      * Constructor utilizado al agendar una nueva cita (RF-05).
      * El precio final se iguala al total cuando no hay promoción
      * (cumple el CHECK {@code final_price <= total_price}).
+     *
+     * @param clientProfileId       identificador del perfil del cliente.
+     * @param professionalProfileId identificador del profesional asignado.
+     * @param branchId              identificador de la sede física.
+     * @param scheduledTimestamp    fecha y hora pactada de inicio (yyyy-MM-dd HH:mm).
+     * @param estimatedEndTimestamp fecha y hora estimada de finalización.
+     * @param totalPrice            precio total de los servicios agendados.
      */
     public Cita(long clientProfileId, long professionalProfileId, int branchId,
                 String scheduledTimestamp, String estimatedEndTimestamp, double totalPrice) {

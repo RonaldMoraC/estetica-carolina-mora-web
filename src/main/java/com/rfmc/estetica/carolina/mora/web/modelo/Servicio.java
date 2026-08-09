@@ -32,6 +32,13 @@ public class Servicio {
     /**
      * Constructor utilizado al registrar o editar un servicio desde
      * el módulo de administración (RF-13).
+     *
+     * @param categoryId           identificador de la categoría del servicio.
+     * @param name                 nombre comercial del servicio.
+     * @param description          detalle técnico o comercial del servicio.
+     * @param durationMinutes      duración estándar del tratamiento en minutos.
+     * @param basePrice            precio base regular antes de descuentos.
+     * @param cleanupMarginMinutes margen técnico de sanitización en minutos.
      */
     public Servicio(int categoryId, String name, String description,
                     int durationMinutes, double basePrice, int cleanupMarginMinutes) {
