@@ -1,0 +1,10 @@
+Enlace del repositorio
+==========================================================
+
+URL del repositorio en GitHub:
+https://github.com/RonaldMoraC/estetica-carolina-mora-web
+
+Aprendiz: Ronald Fabian Mora Contreras
+Ficha: 3186584
+Programa: Análisis y Desarrollo de Software — SENA
+Fecha: 9 de agosto de 2026
