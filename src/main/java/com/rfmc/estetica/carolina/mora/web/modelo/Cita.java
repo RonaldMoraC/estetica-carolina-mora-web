@@ -20,6 +20,7 @@ public class Cita {
     private long appointmentId;
     private long clientProfileId;
     private long professionalProfileId;
+    private int serviceId;
     private int branchId;
     private String scheduledTimestamp;
     private String estimatedEndTimestamp;
@@ -83,6 +84,14 @@ public class Cita {
 
     public void setProfessionalProfileId(long professionalProfileId) {
         this.professionalProfileId = professionalProfileId;
+    }
+    
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 
     public int getBranchId() {

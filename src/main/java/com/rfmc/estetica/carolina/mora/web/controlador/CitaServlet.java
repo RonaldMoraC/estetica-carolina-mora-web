@@ -94,6 +94,7 @@ public class CitaServlet extends HttpServlet {
             String nuevoInicio = fecha + " " + hora;
 
             Cita cita = dao.buscarCitaPorId(id);
+            
             // Seguridad: solo el dueño de la cita puede reprogramarla
             if (cita != null && cita.getClientProfileId() == usuario.getUserId()) {
                 LocalDateTime inicioViejo = LocalDateTime.parse(cita.getScheduledTimestamp(), FORMATO_FECHA);
@@ -124,6 +125,8 @@ public class CitaServlet extends HttpServlet {
         Cita cita = new Cita(usuario.getUserId(), 0, 1, scheduled, scheduled, servicio.getBasePrice());
         boolean exito = dao.insertarCita(cita, servicioId,
                 servicio.getDurationMinutes(), servicio.getCleanupMarginMinutes());
+        
+        cita.setServiceId(servicioId);
 
         response.sendRedirect(exito ? "citas?mensaje=ok"
                 : "agendar?servicioId=" + servicioId + "&error=1");
