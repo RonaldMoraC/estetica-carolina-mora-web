@@ -1,0 +1,329 @@
+/* =====================================================================
+   SISTEMA DE DISEÑO — Estética Carolina Mora (estetica-carolina-mora-web)
+   Author  : Ronald Mora
+   Versión : 1.0
+
+   Diseño mobile-first basado en la guía UI del artefacto
+   GA5-220501095-AA1-EV07:
+   - Paleta: cian #00C3FF, fondos #F4F5F7, texto #1E293B, alerta #FF3B30.
+   - Tipografía Roboto: titulares 20-24pt, inputs 14-16pt, ayudas 12pt.
+   - Táctiles mínimos 48x48 dp (WCAG 2.1 AA).
+   - Breakpoints: 320-480 móvil | 481-768 tablet | 1024+ escritorio.
+   ===================================================================== */
+
+/* ---------- 1. Variables de diseño (tokens) ---------- */
+:root {
+    --cm-cian: #00C3FF;            /* Relleno CTA con texto oscuro */
+    --cm-cian-hover: #00A3D9;      /* Hover de CTA */
+    --cm-cian-fuerte: #0077A8;     /* Links, íconos y bordes (contraste 4.5:1) */
+    --cm-cian-suave: rgba(0, 195, 255, 0.12);
+    --cm-fondo: #F4F5F7;
+    --cm-blanco: #FFFFFF;
+    --cm-texto: #1E293B;
+    --cm-texto-suave: #64748B;
+    --cm-alerta: #FF3B30;          /* Solo íconos/decoración */
+    --cm-alerta-fuerte: #B91C1C;   /* Texto y botones de peligro (4.5:1) */
+    --cm-exito: #166534;
+    --cm-borde: #E2E8F0;
+    --cm-radio: 8px;
+    --cm-radio-grande: 12px;
+    --cm-tactil: 48px;
+    --cm-sombra: 0 2px 10px rgba(30, 41, 59, 0.08);
+    --cm-sombra-hover: 0 6px 18px rgba(0, 163, 217, 0.18);
+}
+
+/* ---------- 2. Base y tipografía ---------- */
+body {
+    background-color: var(--cm-fondo);
+    color: var(--cm-texto);
+    font-family: 'Roboto', 'Inter', Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Titulares de pantalla: 24pt escritorio / 20pt móvil */
+.titulo-pantalla {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cm-texto);
+}
+
+.texto-ayuda {
+    font-size: 0.75rem;
+    color: var(--cm-texto-suave);
+}
+
+/* ---------- 3. Accesibilidad global ---------- */
+/* Foco visible y consistente para navegación con teclado (WCAG 2.4.7) */
+:focus-visible {
+    outline: 3px solid var(--cm-cian-fuerte);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Enlace "saltar al contenido" para lectores de pantalla y teclado */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    background: var(--cm-texto);
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 0 0 var(--cm-radio) 0;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* Respeto por usuarios con vestibular sensible (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- 4. Botones: táctil mínimo 48dp y zona de pulgar ---------- */
+.btn {
+    min-height: var(--cm-tactil);
+    border-radius: var(--cm-radio);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Botón primario CTA: cian con texto OSCURO (contraste 6.9:1) */
+.btn-cta {
+    background-color: var(--cm-cian);
+    border: none;
+    color: var(--cm-texto);
+    font-weight: 700;
+}
+
+.btn-cta:hover,
+.btn-cta:focus {
+    background-color: var(--cm-cian-hover);
+    color: var(--cm-texto);
+}
+
+/* Botón secundario delineado */
+.btn-outline-cm {
+    border: 2px solid var(--cm-cian-fuerte);
+    color: var(--cm-cian-fuerte);
+    background: transparent;
+}
+
+.btn-outline-cm:hover {
+    background: var(--cm-cian-suave);
+    color: var(--cm-cian-fuerte);
+}
+
+/* Botón de peligro (cancelar, eliminar) */
+.btn-peligro {
+    border: 2px solid var(--cm-alerta-fuerte);
+    color: var(--cm-alerta-fuerte);
+    background: transparent;
+}
+
+.btn-peligro:hover {
+    background: var(--cm-alerta-fuerte);
+    color: #FFFFFF;
+}
+
+/* En móviles el CTA principal queda fijo en la zona del pulgar */
+@media (max-width: 480px) {
+    .cta-fijo {
+        position: sticky;
+        bottom: 12px;
+        z-index: 900;
+        width: 100%;
+        box-shadow: var(--cm-sombra-hover);
+    }
+}
+
+/* ---------- 5. Formularios ---------- */
+.form-control,
+.form-select {
+    min-height: var(--cm-tactil);
+    border: 1px solid var(--cm-borde);
+    border-radius: var(--cm-radio);
+    font-size: 1rem; /* 16px evita zoom automático en iOS */
+    color: var(--cm-texto);
+    background-color: var(--cm-blanco);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--cm-cian-fuerte);
+    box-shadow: 0 0 0 3px var(--cm-cian-suave);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+}
+
+.input-group-text {
+    background: var(--cm-fondo);
+    border-color: var(--cm-borde);
+    color: var(--cm-cian-fuerte);
+}
+
+/* ---------- 6. Barra de navegación ---------- */
+.navbar-cm {
+    background-color: var(--cm-blanco);
+    box-shadow: var(--cm-sombra);
+}
+
+.navbar-cm .navbar-brand {
+    color: var(--cm-texto);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.navbar-cm .brand-icon {
+    color: var(--cm-cian-fuerte);
+}
+
+.navbar-cm .brand-sub {
+    display: block;
+    color: var(--cm-texto-suave);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.navbar-cm .nav-link {
+    color: var(--cm-texto);
+    min-height: var(--cm-tactil);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    border-radius: var(--cm-radio);
+    padding-inline: 0.75rem;
+}
+
+.navbar-cm .nav-link:hover {
+    background: var(--cm-cian-suave);
+    color: var(--cm-cian-fuerte);
+}
+
+/* Pestaña activa: no depende solo del color (también negrita + fondo) */
+.navbar-cm .nav-link.activo {
+    color: var(--cm-cian-fuerte);
+    font-weight: 700;
+    background: var(--cm-cian-suave);
+}
+
+.navbar-cm .navbar-toggler {
+    min-width: var(--cm-tactil);
+    min-height: var(--cm-tactil);
+    border-color: var(--cm-borde);
+}
+
+/* Chip con el nombre del usuario en sesión */
+.usuario-chip {
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--cm-cian-suave);
+    color: var(--cm-cian-fuerte);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-weight: 600;
+}
+
+/* ---------- 7. Tarjetas ---------- */
+.card-cm {
+    border: none;
+    border-radius: var(--cm-radio-grande);
+    box-shadow: var(--cm-sombra);
+    background: var(--cm-blanco);
+}
+
+.card-cm .card-header {
+    background: var(--cm-blanco);
+    border-bottom: 1px solid var(--cm-borde);
+    font-weight: 700;
+}
+
+/* Tarjeta de servicio del catálogo */
+.tarjeta-servicio {
+    height: 100%;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--cm-sombra-hover);
+}
+
+.tarjeta-servicio .precio {
+    color: var(--cm-cian-fuerte);
+    font-weight: 700;
+}
+
+.tarjeta-servicio .categoria-chip {
+    background: var(--cm-cian-suave);
+    color: var(--cm-cian-fuerte);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    display: inline-block;
+}
+
+/* ---------- 8. Badges de estado (siempre con texto, no solo color) ---------- */
+.badge-cm {
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.45rem 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.badge-pendiente  { background: #FEF3C7; color: #92400E; }
+.badge-confirmada { background: #DCFCE7; color: var(--cm-exito); }
+.badge-cancelada  { background: #FEE2E2; color: #991B1B; }
+.badge-completada { background: #E0F2FE; color: #075985; }
+
+/* ---------- 9. Alertas accesibles ---------- */
+.alert-cm {
+    border-radius: var(--cm-radio);
+    border: none;
+    font-weight: 500;
+}
+
+.alert-error-cm { background: #FEE2E2; color: #991B1B; }
+.alert-exito-cm { background: #DCFCE7; color: var(--cm-exito); }
+
+/* ---------- 10. Tablas del módulo admin ---------- */
+.table-cm thead {
+    background: var(--cm-texto);
+    color: #FFFFFF;
+}
+
+.table-cm td,
+.table-cm th {
+    vertical-align: middle;
+}
+
+/* ---------- 11. Contenedores y espaciado responsivo ---------- */
+.contenedor-cm {
+    max-width: 1200px;
+    padding-inline: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .contenedor-cm { padding-inline: 2rem; }
+}
