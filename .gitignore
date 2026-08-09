@@ -1,0 +1,28 @@
+# Archivos de compilación y distribución de NetBeans
+build/
+dist/
+nbbuild/
+nbdist/
+nbproject/private/
+out/
+
+# Archivos temporales del sistema operativo
+Thumbs.db
+.DS_Store
+
+# Configuraciones personales de IDE (para no subir rutas locales)
+.vscode/
+.idea/
+*.iml
+
+# Logs de Tomcat y Java
+*.log
+logs/
+
+# Archivos comprimidos de entrega
+*.zip
+*.rar
+
+# Mantener las librerías en WEB-INF/lib es correcto; NO ignorar:
+# !web/WEB-INF/lib/
+/target/
