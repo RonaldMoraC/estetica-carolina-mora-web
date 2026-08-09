@@ -114,7 +114,20 @@ estetica-carolina-mora-web/
 | 3 | Herramientas de versionamiento | Repositorio en GitHub con historial de commits por fase |
 | 4 | Estándar de codificación | Convenciones de paquetes, clases, métodos y constantes + Javadoc + Logger |
 
-## 📄 Contenido del ZIP de entrega (`RONALDMORA_AA2_EV01.zip`)
+## ✅ Cumplimiento de la lista de chequeo (IE-GA7-220501096-AA2-EV02)
+
+| # | Criterio | Cómo se cumple |
+|---|---|---|
+| 1 | Formularios HTML con servlets | 7 formularios (`login`, `registro`, filtros de catálogo, `agendar`, reprogramación, `perfil`, `serviciosAdmin`) procesados por 5 servlets MVC |
+| 2 | Métodos GET y POST para parámetros | `doGet` (navegación, filtros, acciones) y `doPost` (envío de formularios) con `request.getParameter()` en todos los servlets |
+| 3 | Elementos de JSP | Directivas, scriptlets, declaraciones, expresiones, `<jsp:include>`/`<jsp:param>` y objetos implícitos en las 8 vistas |
+| 4 | Versionamiento del código | Repositorio GitHub con commits semánticos por fase |
+
+> Las pruebas del módulo (título de la evidencia: "codificados **y probados**")
+> se documentan en `PRUEBAS.md`: 24 casos funcionales, pruebas responsivas
+> (360×800, 390×844, 768×1024, 1366×768) y checklist de accesibilidad WCAG 2.1 AA.
+
+## 📄 Contenido del ZIP de entrega (`RONALDMORA_AA2_EV02.zip`)
 
 - Carpeta completa del proyecto NetBeans (`estetica-carolina-mora-web/`)
 - `enlace_repositorio.txt` con la URL del repositorio en GitHub
