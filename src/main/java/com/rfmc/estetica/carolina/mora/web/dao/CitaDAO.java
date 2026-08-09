@@ -215,4 +215,43 @@ public class CitaDAO {
             return false;
         }
     }
+    
+        /**
+     * Busca una cita por su ID (necesario para el flujo de reprogramación RF-09).
+     *
+     * @param appointmentId identificador de la cita.
+     * @return objeto Cita o null si no existe.
+     */
+    public Cita buscarCitaPorId(long appointmentId) {
+        Connection conexion = Conexion.conectar();
+        Cita cita = null;
+        String sql = "SELECT appointment_id, client_profile_id, professional_profile_id, "
+                + "branch_id, scheduled_timestamp, estimated_end_timestamp, "
+                + "appointment_status, total_price, final_price "
+                + "FROM appointment WHERE appointment_id = ?";
+
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setLong(1, appointmentId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cita = new Cita();
+                cita.setAppointmentId(rs.getLong("appointment_id"));
+                cita.setClientProfileId(rs.getLong("client_profile_id"));
+                cita.setProfessionalProfileId(rs.getLong("professional_profile_id"));
+                cita.setBranchId(rs.getInt("branch_id"));
+                cita.setScheduledTimestamp(rs.getTimestamp("scheduled_timestamp")
+                        .toLocalDateTime().format(FORMATO_FECHA));
+                cita.setEstimatedEndTimestamp(rs.getTimestamp("estimated_end_timestamp")
+                        .toLocalDateTime().format(FORMATO_FECHA));
+                cita.setAppointmentStatus(rs.getString("appointment_status"));
+                cita.setTotalPrice(rs.getDouble("total_price"));
+                cita.setFinalPrice(rs.getDouble("final_price"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cita;
+    }
 }

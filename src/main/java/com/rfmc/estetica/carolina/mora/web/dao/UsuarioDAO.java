@@ -185,4 +185,28 @@ public class UsuarioDAO {
             return false;
         }
     }
+        /**
+     * Verifica si ya existe un usuario registrado con el correo indicado.
+     * Restricción de RF-01: el correo no debe existir previamente.
+     *
+     * @param email correo a verificar.
+     * @return true si el correo ya está registrado.
+     */
+    public boolean emailExiste(String email) {
+        Connection conexion = Conexion.conectar();
+        String sql = "SELECT COUNT(*) AS total FROM user WHERE email = ?";
+
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("total") > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
